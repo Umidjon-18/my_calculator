@@ -20,8 +20,8 @@ mixin DrawerUtils {
     'assets/images/main_images/theme_four.png',
     'assets/images/main_images/theme_five.png',
     'assets/images/main_images/theme_seven.png',
+    'assets/images/main_images/theme_7.png',
     'assets/images/main_images/theme_nine.png',
-    'assets/images/main_images/theme_ten.png',
 
   ];
 }

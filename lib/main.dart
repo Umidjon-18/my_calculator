@@ -19,7 +19,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.interTextTheme(),
       ),
-      // home: TestPage(),
       onGenerateRoute: (settings) => Routes.generateRoute(settings),
     );
   }

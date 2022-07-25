@@ -80,7 +80,7 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xffFCA300),
     'firstTextFieldColor': Colors.white,
     'secondTextFieldColor': Colors.white,
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 0.0,
     'calculatorCrossAxisSpacing': 0.0,
@@ -92,9 +92,9 @@ mixin ThemeContants {
       color: Color(0xff1F2229),
       border: Border(
         top: BorderSide(width: 2, color: Color(0xff5A5A5A)),
-        right: BorderSide(width: 2, color: Colors.black),
-        left: BorderSide(width: 2, color: Colors.black),
-      ),
+        right: BorderSide(width: 1, color: Colors.black),
+        left: BorderSide(width: 1, color: Colors.black),
+       ),
     ),
     'simpleBtDecoration': const BoxDecoration(
       color: Color(0xff32363F),
@@ -150,7 +150,7 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xff333333),
     'firstTextFieldColor': const Color(0xff333333),
     'secondTextFieldColor': const Color(0xff333333),
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 0.0,
     'calculatorCrossAxisSpacing': 0.0,
@@ -221,7 +221,7 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xff333333),
     'firstTextFieldColor': const Color(0xff333333),
     'secondTextFieldColor': const Color(0xff333333),
-    'calculatorBtchildAspectRatio': (.6 / .425),
+    'calculatorBtchildAspectRatio': (.47 / .425),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 8.0,
     'calculatorCrossAxisSpacing': 8.0,
@@ -293,7 +293,7 @@ mixin ThemeContants {
     'settingBtColor': Colors.red,
     'firstTextFieldColor': Colors.white,
     'secondTextFieldColor': Colors.white,
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 0.0,
     'calculatorCrossAxisSpacing': 0.0,
@@ -305,8 +305,8 @@ mixin ThemeContants {
       color: Color(0xff161616),
       border: Border(
         top: BorderSide(width: 2, color: Color(0xff5A5A5A)),
-        right: BorderSide(width: 2, color: Colors.black),
-        left: BorderSide(width: 2, color: Colors.black),
+        right: BorderSide(width: 1, color: Colors.black),
+        left: BorderSide(width: 1, color: Colors.black),
       ),
     ),
     'simpleBtDecoration': const BoxDecoration(
@@ -332,8 +332,8 @@ mixin ThemeContants {
     'IsOddColor': const Color(0xff555454).withOpacity(.15),
   };
 
-  ///////////////   7 - theme   ////////////////
-  Map<String, dynamic> sevenTheme = {
+  ///////////////   6 - theme   ////////////////
+  Map<String, dynamic> sixTheme = {
     'appBarBgColor': const Color.fromARGB(255, 36, 36, 36),
     'appBarShape': null,
     'fullBgColor': const Color(0xff111111),
@@ -345,11 +345,11 @@ mixin ThemeContants {
     'historyDecoration': BoxDecoration(
       border: Border.all(
         color: const Color(0xff02C4F4),
-        width: 1,
+        width: 2,
       ),
       borderRadius: BorderRadius.circular(10),
     ),
-    'historyIconColor': Colors.grey[300],
+    'historyIconColor': const Color(0xff02C4F4),
     'calKeyboardContainerDec': const BoxDecoration(
       color: Color(0xff111111),
     ),
@@ -357,15 +357,11 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xff02C4F4),
     'firstTextFieldColor': const Color(0xff02C4F4),
     'secondTextFieldColor': const Color(0xff02C4F4),
-    'calculatorBtchildAspectRatio': (.6 / .43),
+    'calculatorBtchildAspectRatio': (.47 / .43),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 5.0,
     'calculatorCrossAxisSpacing': 5.0,
-    'bottomSheetDecoration': const BoxDecoration(
-      color: Color(0xffDCDCDC),
-    ),
-    'bottomSheetIconColor': Colors.black,
-    'operatorBtDecoration': BoxDecoration(
+    'bottomSheetDecoration': BoxDecoration(
       gradient: const LinearGradient(
         begin: Alignment.topRight,
         stops: [
@@ -374,6 +370,21 @@ mixin ThemeContants {
         ],
         colors: [
           Color(0xff01232F),
+          Color(0xff111111),
+        ],
+      ),
+      borderRadius: BorderRadius.circular(5),
+    ),
+    'bottomSheetIconColor': const Color(0xff02C4F4),
+    'operatorBtDecoration': BoxDecoration(
+      gradient: const LinearGradient(
+        begin: Alignment.topRight,
+        stops: [
+          0.1,
+          1.5,
+        ],
+        colors: [
+          Color.fromARGB(255, 1, 44, 59),
           Color(0xff111111),
         ],
       ),
@@ -387,16 +398,16 @@ mixin ThemeContants {
           1.5,
         ],
         colors: [
-          Color(0xff01232F),
+          Color.fromARGB(255, 1, 44, 59),
           Color(0xff111111),
         ],
       ),
       borderRadius: BorderRadius.circular(5),
     ),
     'outlineBorder': null,
-    'simpleButtonColor': Colors.white,
-    'operatorButtonColor': Colors.grey[50],
-    'scientificButtonColor': Colors.white,
+    'simpleButtonColor': const Color(0xff02C4F4),
+    'operatorButtonColor': const Color(0xff02C4F4),
+    'scientificButtonColor': const Color(0xff02C4F4),
     'currencyTabDecoration': const BoxDecoration(
       image: DecorationImage(
           image:
@@ -408,8 +419,8 @@ mixin ThemeContants {
     'IsOddColor': const Color(0xff555454).withOpacity(.15),
   };
 
-  ///////////////   8 - theme   ////////////////
-  Map<String, dynamic> eightTheme = {
+  ///////////////   7 - theme   ////////////////
+  Map<String, dynamic> sevenTheme = {
     'appBarBgColor': const Color(0xff023844),
     'appBarShape': null,
     'fullBgColor': const Color(0xff05525C),
@@ -433,7 +444,7 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xffC6FDFF),
     'firstTextFieldColor': const Color(0xff9EFEFF),
     'secondTextFieldColor': const Color(0xff9EFEFF),
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'measureBtchildAspectRatio': (.6 / .6),
     'calculatorMainAxisSpacing': 0.0,
     'calculatorCrossAxisSpacing': 0.0,
@@ -508,10 +519,10 @@ mixin ThemeContants {
     'settingBtColor': Colors.white,
     'firstTextFieldColor': Colors.white,
     'secondTextFieldColor': Colors.white,
-    'calculatorBtchildAspectRatio': (.6 / .42),
+    'calculatorBtchildAspectRatio': (.47 / .42),
     'measureBtchildAspectRatio': (.6 / .6),
-    'calculatorMainAxisSpacing': 11.0,
-    'calculatorCrossAxisSpacing': 11.0,
+    'calculatorMainAxisSpacing': 1.0,
+    'calculatorCrossAxisSpacing': 1.0,
     'bottomSheetDecoration': const BoxDecoration(
       color: Colors.black,
     ),
@@ -581,67 +592,81 @@ mixin ThemeContants {
     'IsOddColor': Colors.black.withOpacity(.15),
   };
 
-///////////////   10 - theme   ////////////////
-  Map<String, dynamic> tenthTheme = {
-    'appBarBgColor': Colors.transparent,
-    'appBarShape': Border(
-      bottom: BorderSide(color: Colors.blue[900]!, width: 2.5),
-    ),
-    'fullBgColor': Colors.white,
+  ///////////////   10 - theme   ////////////////
+  Map<String, dynamic> tenTheme = {
+    'appBarBgColor': const Color(0xff023844),
+    'appBarShape': null,
+    'fullBgColor': const Color(0xff05525C),
+    'swipeColor': const Color(0xffC6FDFF),
+    'animationTextColors': Colors.grey[300],
     'fullBgDecoration': const BoxDecoration(
-      color: Colors.white,
-      image: DecorationImage(
-        image: AssetImage('assets/images/theme_images/theme_ten/full_bg.png'),
-        fit: BoxFit.cover,
-      ),
+      color: Color(0xff05525C),
     ),
-    'calKeyboardContainerDec': null,
-    'menuBtColor': Colors.blue[900],
-    'settingBtColor': Colors.blue[400],
-    'firstTextFieldColor': Colors.blue[900],
-    'secondTextFieldColor': Colors.blue[900],
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'historyDecoration': BoxDecoration(
+      border: Border.all(
+        color: const Color(0xff9EFEFF),
+        width: 1,
+      ),
+      borderRadius: BorderRadius.circular(10),
+    ),
+    'historyIconColor': const Color(0xffC6FDFF),
+    'calKeyboardContainerDec': const BoxDecoration(
+      color: Color(0xff111111),
+    ),
+    'menuBtColor': const Color(0xffC6FDFF),
+    'settingBtColor': const Color(0xffC6FDFF),
+    'firstTextFieldColor': const Color(0xff9EFEFF),
+    'secondTextFieldColor': const Color(0xff9EFEFF),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'measureBtchildAspectRatio': (.6 / .6),
+    'calculatorMainAxisSpacing': 0.0,
+    'calculatorCrossAxisSpacing': 0.0,
     'bottomSheetDecoration': const BoxDecoration(
+      color: Color(0xff023844),
       image: DecorationImage(
-          image:
-              AssetImage('assets/images/theme_images/theme_ten/up_down_bg.png'),
+          image: AssetImage('assets/images/theme_images/theme_ten/down_bg.png'),
           fit: BoxFit.cover),
     ),
-    'bottomSheetIconColor': Colors.blue,
+    'bottomSheetIconColor': Colors.white,
     'operatorBtDecoration': BoxDecoration(
+      color: const Color(0xff023844),
       image: const DecorationImage(
-        image:
-            AssetImage('assets/images/theme_images/theme_ten/operator_bg.png'),
-      ),
-      border: Border.all(color: Colors.blueAccent),
+          image: AssetImage('assets/images/theme_images/theme_ten/btn_bg.png'),
+          fit: BoxFit.cover),
+      border: Border.all(color: Colors.white, width: 0),
     ),
     'simpleBtDecoration': BoxDecoration(
+      color: const Color(0xff0A7988),
       image: const DecorationImage(
-        image: AssetImage('assets/images/theme_images/theme_ten/button_bg.png'),
-      ),
-      border: Border.all(color: Colors.blueAccent),
+          image: AssetImage('assets/images/theme_images/theme_ten/btn_bg.png'),
+          fit: BoxFit.cover),
+      border: Border.all(color: Colors.white, width: 0),
     ),
     'outlineBorder': null,
-    'calculatorBtDecoration': const BoxDecoration(
-      image: DecorationImage(
-          image:
-              AssetImage('assets/images/theme_images/theme_ten/button_bg.png'),
-          fit: BoxFit.cover),
-    ),
-    'buttonColor': Colors.blue[900],
+    'simpleButtonColor': const Color(0xff9EFEFF),
+    'operatorButtonColor': const Color(0xff9EFEFF),
+    'scientificButtonColor': Colors.white,
     'currencyTabDecoration': const BoxDecoration(
+      boxShadow: [
+        BoxShadow(
+          color: Colors.white,
+          spreadRadius: 7,
+          blurRadius: 7,
+        )
+      ],
       image: DecorationImage(
           image:
               AssetImage('assets/images/theme_images/theme_ten/cur_tab_bg.png'),
           fit: BoxFit.cover),
     ),
-    'measureListViewItemBg': Colors.blue[900]!.withOpacity(.15),
+    'measureTabItemColor': const Color(0xffC6FDFF),
+    'IsEvenColor': const Color(0xff282828).withOpacity(.15),
+    'IsOddColor': Colors.black.withOpacity(.15),
   };
 
 ///////////////   8 - theme   ////////////////
 
-  Map<String, dynamic> eighTheme = {
+  Map<String, dynamic> eightTheme = {
     'appBarBgColor': const Color(0xff023844),
     'appBarShape': null,
     'fullBgColor': const Color(0xff05525C),
@@ -653,7 +678,7 @@ mixin ThemeContants {
     'settingBtColor': const Color(0xffC6FDFF),
     'firstTextFieldColor': const Color(0xffC6FDFF),
     'secondTextFieldColor': const Color(0xffC6FDFF),
-    'calculatorBtchildAspectRatio': (.6 / .44),
+    'calculatorBtchildAspectRatio': (.47 / .44),
     'bottomSheetDecoration': const BoxDecoration(
       image: DecorationImage(
           image:
@@ -706,15 +731,11 @@ mixin ThemeContants {
       case 5:
         return fiveTheme;
       case 6:
-        return firstTheme;
+        return sixTheme;
       case 7:
         return sevenTheme;
       case 8:
-        return eightTheme;
-      case 9:
         return nineTheme;
-      case 10:
-        return tenthTheme;
       default:
         return firstTheme;
     }

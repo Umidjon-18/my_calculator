@@ -1,6 +1,5 @@
 import 'package:eval_ex/expression.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class CalculatorUtils {
   var icMoonPath = 'assets/images/ic_moon.png';
@@ -18,29 +17,8 @@ class CalculatorUtils {
   final resultController = TextEditingController();
   double topFieldSize = 35;
   double bottomFieldSize = 45;
-  int theme = 1;
-  final List<String> buttons = [
-    'C',
-    '+/-',
-    '%',
-    '/',
-    '7',
-    '8',
-    '9',
-    '*',
-    '4',
-    '5',
-    '6',
-    '-',
-    '1',
-    '2',
-    '3',
-    '+',
-    '.',
-    '0',
-    'del',
-    '=',
-  ];
+  int minimumAccuracy = 9;
+  final ValueNotifier<int> theme = ValueNotifier<int>(1);
   final List<String> numbers = [
     '0',
     '1',
@@ -59,26 +37,26 @@ class CalculatorUtils {
   bool isSimple = true;
 
   var scientificButtons = {
-    'assets/images/main_images/sc_rad.png': '',
-    'assets/images/main_images/sc_sin.png': 'SINR(',
-    'assets/images/main_images/sc_cos.png': 'COSR(',
-    'assets/images/main_images/sc_tan.png': 'TANR(',
-    'assets/images/main_images/sc_pi.png': 'PI',
-    'assets/images/main_images/sc_sinh.png': 'ASINR(',
-    'assets/images/main_images/sc_cosh.png': 'ACOSR(',
-    'assets/images/main_images/sc_tanh.png': 'ATGR(',
-    'assets/images/main_images/sc_x_1.png': '^(-1)',
-    'assets/images/main_images/sc_x_2.png': '^2',
-    'assets/images/main_images/sc_x_3.png': '^3',
-    'assets/images/main_images/sc_exp.png': 'e',
-    'assets/images/main_images/sc_log.png': 'LOG10(',
-    'assets/images/main_images/sc_ln.png': 'LOG(',
-    'assets/images/main_images/sc_e.png': 'e',
-    'assets/images/main_images/sc_e_n.png': 'e^',
-    'assets/images/main_images/sc_x_module.png': 'ABS(',
-    'assets/images/main_images/sc_sqrt.png': 'SQRT(',
-    'assets/images/main_images/sc_sqrt_3.png': '^(-3)',
-    'assets/images/main_images/sc_n_fac.png': 'FACT(',
+    'RAD': '',
+    'sin': 'SINR(',
+    'cos': 'COSR(',
+    'tan': 'TANR(',
+    'π': 'PI',
+    'sinh': 'ASINR(',
+    'cosh': 'ACOSR(',
+    'tanh': 'ATGR(',
+    'x⁻¹': '^(-1)',
+    'x²': '^2',
+    'x³': '^3',
+    'xⁿ': '^',
+    'log': 'LOG10(',
+    'ln': 'LOG(',
+    'e': 'e',
+    'eⁿ': 'e^',
+    '|x|': 'ABS(',
+    '√': 'SQRT(',
+    '∛': '^(-3)',
+    'n!': 'FACT(',
   };
 
   List<Tab> myTabs = [
@@ -103,28 +81,27 @@ class CalculatorUtils {
   ];
 
   Map<String, String> simpleButtons = {
-    'assets/images/main_images/x_n.png': '^',
-    'assets/images/main_images/foiz.png': '%',
-    'assets/images/main_images/bolish.png': '/',
-    'assets/images/main_images/backspace.png': 'del',
-    'assets/images/main_images/seven.png': '7',
-    'assets/images/main_images/eight.png': '8',
-    'assets/images/main_images/nine.png': '9',
-    'assets/images/main_images/multiplication.png': '*',
-    'assets/images/main_images/four.png': '4',
-    'assets/images/main_images/five.png': '5',
-    'assets/images/main_images/six.png': '6',
-    'assets/images/main_images/subtraction.png': '-',
-    'assets/images/main_images/one.png': '1',
-    'assets/images/main_images/two.png': '2',
-    'assets/images/main_images/three.png': '3',
-    'assets/images/main_images/addition.png': '+',
-    'assets/images/main_images/vergul.png': '.',
-    'assets/images/main_images/zero.png': '0',
-    'assets/images/main_images/brackets.png': '(',
-    'assets/images/main_images/equal.png': '=',
+    '(': '(',
+    ')': ')',
+    '÷': '/',
+    '⌫': 'del',
+    '7': '7',
+    '8': '8',
+    '9': '9',
+    '×': '*',
+    '4': '4',
+    '5': '5',
+    '6': '6',
+    '-': '-',
+    '1': '1',
+    '2': '2',
+    '3': '3',
+    '+': '+',
+    ',': '.',
+    '0': '0',
+    '%': '%',
+    '=': '=',
   };
-
 
   String splitter(String string) {
     final List<String> operators = ['/', '+', '-', '*'];
@@ -136,7 +113,7 @@ class CalculatorUtils {
   }
 
   bool isOperator(String item) {
-    var operatorList = ['/', '+', '-', '*', '.'];
+    var operatorList = ['/', '+', '-', '*', '.', '(', ')'];
     for (var element in operatorList) {
       if (item == element) {
         return true;
@@ -156,13 +133,13 @@ class CalculatorUtils {
       if (!operators.contains(operation.split('').last)) {
         var result = Expression(operation).eval();
         return result.toString().contains('.')
-            ? result!.toStringAsFixed(3)
+            ? result!.toStringAsFixed(minimumAccuracy)
             : result.toString();
       }
       var result =
           Expression(operation.substring(0, operation.length - 1)).eval();
       return result.toString().contains('.')
-          ? result!.toStringAsFixed(3)
+          ? result!.toStringAsFixed(minimumAccuracy)
           : result.toString();
     }
     return operation;
