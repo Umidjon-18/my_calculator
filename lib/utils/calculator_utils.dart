@@ -2,23 +2,12 @@ import 'package:eval_ex/expression.dart';
 import 'package:flutter/material.dart';
 
 class CalculatorUtils {
-  var icMoonPath = 'assets/images/ic_moon.png';
-  var icSunPath = 'assets/images/ic_sun.png';
-  var icSelectedPath = 'assets/images/ic_selected.png';
-  var first = 'assets/images/ic_selected.png';
-  var second = 'assets/images/ic_moon.png';
-  Color pageBackground = const Color(0xff1E1E1E);
-  Color defaultButtonColor = const Color(0xff2E2F38);
-  Color defaultButtonTextColor = Colors.white;
-  Color defaultInputTextColor = Colors.white;
-  Color defaultThemeBgColor = const Color(0xff2E2F38);
-  Color defaultTopButtonColor = const Color(0xff4E505F);
   final calculateController = TextEditingController();
   final resultController = TextEditingController();
   double topFieldSize = 35;
   double bottomFieldSize = 45;
   int minimumAccuracy = 9;
-  final ValueNotifier<int> theme = ValueNotifier<int>(1);
+  final ValueNotifier<int> theme = ValueNotifier<int>(6);
   final List<String> numbers = [
     '0',
     '1',
@@ -37,7 +26,7 @@ class CalculatorUtils {
   bool isSimple = true;
 
   var scientificButtons = {
-    'RAD': '',
+    'RAD': 'rad',
     'sin': 'SINR(',
     'cos': 'COSR(',
     'tan': 'TANR(',
@@ -113,7 +102,7 @@ class CalculatorUtils {
   }
 
   bool isOperator(String item) {
-    var operatorList = ['/', '+', '-', '*', '.', '(', ')'];
+    var operatorList = ['/', '+', '-', '*', '.'];
     for (var element in operatorList) {
       if (item == element) {
         return true;
@@ -128,6 +117,7 @@ class CalculatorUtils {
         operation.contains('*') ||
         operation.contains('/') ||
         operation.contains('%') ||
+        operation.contains('^') ||
         operation.contains('(') ||
         operation.contains(')')) {
       if (!operators.contains(operation.split('').last)) {

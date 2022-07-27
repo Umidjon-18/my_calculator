@@ -190,11 +190,11 @@ static const Map<String, dynamic> distanceAmounts = {
 
     static const Map<String, dynamic> fuelAmounts = {
     'liters/100 kilometer': 1,
-    'gallons(UK)/100 miles': 2.824858,
-    'gallons(US)/100 miles': 2.35294117,
+    'gallons(UK)/100 miles': 2.83,
+    'gallons(US)/100 miles': 2.35,
     'kilometer/liter': 0.01,
-    '(UK)miles per gallon': 0.0035400619,
-    '(US)miles per gallon': 0.0042514371
+    '(UK)miles per gallon': 0.00354,
+    '(US)miles per gallon': 0.00425
   };
 
   static const Map<String, String> cooking = {
@@ -217,20 +217,20 @@ static const Map<String, dynamic> distanceAmounts = {
 
     static const Map<String, dynamic> cookingAmounts = {
     'milliliter': 1,
-    'gallon': 4545.454545,
-    'quart': 1136.363636,
-    'pint': 568.181818,
-    'ounce': 28.40909,
-    'cup': 284.0909,
-    'tablespoon': 17.7619893,
-    'teaspoon': 5.917159,
-    'gallon(UK)': 4545.4545,
-    'quart(UK)': 1136.363636,
-    'pint(UK)': 568.181818,
-    'ounce(UK)': 28.40909,
-    'cup(UK)': 284.0909,
-    'tablespoon(UK)': 17.7619893,
-    'teaspoon(UK)': 5.917159,
+    'gallon': 4545.5,
+    'quart': 1136.4,
+    'pint': 568,
+    'ounce': 28.5,
+    'cup': 284,
+    'tablespoon': 17.8,
+    'teaspoon': 5.91,
+    'gallon(UK)': 4545.5,
+    'quart(UK)': 1136.4,
+    'pint(UK)': 568.2,
+    'ounce(UK)': 28.4,
+    'cup(UK)': 284.1,
+    'tablespoon(UK)': 17.76,
+    'teaspoon(UK)': 5.91,
   };
 
   String measureAmount = '1';

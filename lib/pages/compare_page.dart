@@ -36,6 +36,9 @@ class _ComparePageState extends State<ComparePage>
   @override
   void initState() {
     super.initState();
+    theme.addListener(() {
+      setState(() {});
+    });
     _editingControllerTop.addListener(() {
       if (_topFocus.hasFocus) {
         setState(() {

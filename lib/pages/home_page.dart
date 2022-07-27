@@ -10,6 +10,7 @@ import 'package:calculator/utils/hive_utils.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
+import 'package:status_bar_control/status_bar_control.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../utils/currency_utils.dart';
@@ -102,16 +103,16 @@ class _HomePageState extends State<HomePage>
       }
     });
     setDatabase();
-    // initPlatformState();
+    initPlatformState();
   }
 
   /// status bar switcher
-  // Future<void> initPlatformState() async {
-  //   try {
-  //     await FlutterStatusbarManager.setHidden(switcher_six);
-  //   } on PlatformException {}
-  //   setState(() {});
-  // }
+  Future<void> initPlatformState() async {
+    try {
+      await StatusBarControl.setHidden(switcher_six);
+    } on PlatformException {}
+    setState(() {});
+  }
 
   /// #database connection
   setDatabase() async {
@@ -189,8 +190,8 @@ class _HomePageState extends State<HomePage>
     } else if (command == '=') {
       if (resultController.text.isNotEmpty) {
         var currentTime = DateTime.now().toString();
-        historyBox.put(currentTime,
-            [calculateController.text, resultController.text.substring(1)]);
+        historyBox.put(
+            currentTime, [calculateController.text, resultController.text]);
         calculateController.text = resultController.text;
         resultController.text = '';
       }
@@ -199,7 +200,7 @@ class _HomePageState extends State<HomePage>
         if (resultController.text.contains('-')) {
           resultController.text = resultController.text.substring(1);
         } else {
-          resultController.text = '-${resultController.text.substring(1)}';
+          resultController.text = '-${resultController.text}';
         }
       }
     } else if (command == '%') {
@@ -243,9 +244,9 @@ class _HomePageState extends State<HomePage>
         }
       }
     } else if (command == '(') {
-      if(calculateController.text.isEmpty){
+      if (calculateController.text.isEmpty) {
         calculateController.text += command;
-      }else if (operators.contains(
+      } else if (operators.contains(
           calculateController.text[calculateController.text.length - 1])) {
         calculateController.text += command;
         resultController.text =
@@ -266,9 +267,9 @@ class _HomePageState extends State<HomePage>
     } else {
       if (resultController.text.isEmpty &&
           calculateController.text.isNotEmpty) {
-        if(calculateController.text.contains('(')){
+        if (calculateController.text.contains('(')) {
           calculateController.text += command;
-        }else {
+        } else {
           calculateController.text = command;
         }
         resultController.text = command;
@@ -468,11 +469,23 @@ class _HomePageState extends State<HomePage>
                           size: 20,
                           color: Colors.red,
                         )),
-                    title: Text(
-                      historyResult.value.values.elementAt(index)[0],
-                      style: TextStyle(
-                          color: currentTheme['simpleButtonColor'],
-                          fontSize: 14),
+                    title: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(
+                          historyResult.value.values.elementAt(index)[1],
+                          style: TextStyle(
+                              color: currentTheme['simpleButtonColor'],
+                              fontSize: 12),
+                        ),
+                        Text(
+                          historyResult.value.values.elementAt(index)[0],
+                          style: TextStyle(
+                              color: currentTheme['simpleButtonColor'],
+                              fontSize: 12),
+                        ),
+                      ],
                     ),
                     subtitle: Text(
                       historyResult.value.keys
@@ -480,14 +493,21 @@ class _HomePageState extends State<HomePage>
                           .substring(0, 19),
                       style: TextStyle(
                           color: currentTheme['simpleButtonColor'],
-                          fontSize: 10),
+                          fontSize: 8),
                     ),
-                    trailing: Text(
-                      historyResult.value.values.elementAt(index)[1],
-                      style: TextStyle(
-                          color: currentTheme['simpleButtonColor'],
-                          fontSize: 14),
-                    ),
+                    trailing: IconButton(
+                        onPressed: () {
+                          calculateController.text =
+                              historyResult.value.values.elementAt(index)[0];
+                          resultController.text =
+                              historyResult.value.values.elementAt(index)[1];
+                          setState(() {});
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(
+                          Icons.document_scanner_outlined,
+                          color: currentTheme['menuBtColor'],
+                        )),
                   ),
                 ),
               ),
@@ -1157,7 +1177,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(
@@ -1265,7 +1285,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(
@@ -1371,7 +1391,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(
@@ -1477,7 +1497,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(size,
@@ -1583,7 +1603,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(
@@ -1693,7 +1713,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(
@@ -1799,7 +1819,7 @@ class _HomePageState extends State<HomePage>
                                     context: context,
                                     builder: (BuildContext context) {
                                       return Container(
-                                        color: Colors.transparent,
+                                        color: currentTheme['fullBgColor'],
                                         width: double.infinity,
                                         height: size.height * 0.67,
                                         child: measureBottomSheet(size,
@@ -2006,7 +2026,7 @@ class _HomePageState extends State<HomePage>
                     value: switcher_six,
                     onChanged: (value) {
                       switcher_six = value;
-                      // initPlatformState();
+                      initPlatformState();
                       setState(() {
                         settingsBox.put('isHiddenBar', switcher_six);
                       });

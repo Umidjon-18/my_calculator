@@ -1,6 +1,7 @@
 
 
 import 'package:calculator/pages/about_page.dart';
+import 'package:calculator/pages/intro_page.dart';
 import 'package:flutter/material.dart';
 
 import '../pages/compare_page.dart';
@@ -8,7 +9,8 @@ import '../pages/currency_page.dart';
 import '../pages/home_page.dart';
 
 class Routes {
-  static const homePage = '/';
+  static const introPage = '/';
+  static const homePage = '/homePage';
   static const comparePage = '/comparePage';
   static const currencyPage = '/currencyPage';
   static const aboutPage = '/aboutPage';
@@ -18,6 +20,8 @@ class Routes {
       Map<String, dynamic>? args = routeSettings.arguments as Map<String, dynamic>?;
       args ?? <String, dynamic>{};
       switch (routeSettings.name) {
+        case introPage:
+          return MaterialPageRoute(builder: (context) => const IntroPage());
         case homePage:
           return MaterialPageRoute(builder: (context) => const HomePage());
         case comparePage:
