@@ -8,6 +8,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  awesome_dialog:
+    dependency: "direct main"
+    description:
+      name: awesome_dialog
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.2.1"
   boolean_selector:
     dependency: transitive
     description:
@@ -99,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "6.1.2"
+  flare_flutter:
+    dependency: transitive
+    description:
+      name: flare_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "3.0.2"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -344,7 +358,14 @@ packages:
       name: show_up_animation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "2.0.0"
+  simple_animations:
+    dependency: transitive
+    description:
+      name: simple_animations
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.2.0"
   simple_gradient_text:
     dependency: "direct main"
     description:
@@ -371,13 +392,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
-  status_bar_control:
-    dependency: "direct main"
-    description:
-      name: status_bar_control
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.2.1"
   stream_channel:
     dependency: transitive
     description:

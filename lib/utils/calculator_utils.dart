@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 class CalculatorUtils {
   final calculateController = TextEditingController();
   final resultController = TextEditingController();
-  double topFieldSize = 35;
-  double bottomFieldSize = 45;
+  double topFieldSize = 30;
+  double bottomFieldSize = 40;
   int minimumAccuracy = 9;
   final ValueNotifier<int> theme = ValueNotifier<int>(6);
   final List<String> numbers = [

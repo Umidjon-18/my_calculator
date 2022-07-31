@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math' as math;
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:calculator/utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:calculator/utils/hive_utils.dart';
 import 'package:flutter_fast_forms/flutter_fast_forms.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
-import 'package:status_bar_control/status_bar_control.dart';
 import 'package:wakelock/wakelock.dart';
 
 import '../utils/currency_utils.dart';
@@ -103,16 +103,16 @@ class _HomePageState extends State<HomePage>
       }
     });
     setDatabase();
-    initPlatformState();
+    // initPlatformState();
   }
 
   /// status bar switcher
-  Future<void> initPlatformState() async {
-    try {
-      await StatusBarControl.setHidden(switcher_six);
-    } on PlatformException {}
-    setState(() {});
-  }
+  // Future<void> initPlatformState() async {
+  //   try {
+  //     await StatusBarControl.setHidden(switcher_six);
+  //   } on PlatformException {}
+  //   setState(() {});
+  // }
 
   /// #database connection
   setDatabase() async {
@@ -2026,7 +2026,7 @@ class _HomePageState extends State<HomePage>
                     value: switcher_six,
                     onChanged: (value) {
                       switcher_six = value;
-                      initPlatformState();
+                      // initPlatformState();
                       setState(() {
                         settingsBox.put('isHiddenBar', switcher_six);
                       });
@@ -2140,53 +2140,29 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ),
-              GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) => AlertDialog(
-                      content: Text(
-                        'To get more themes, stay tuned to our product. We will add new themes with each update.',
-                        style: TextStyle(
-                            color: Colors.blue[400],
-                            fontWeight: FontWeight.w400,
-                            fontSize: 22),
-                        textAlign: TextAlign.center,
-                      ),
-                      actions: [
-                        OutlinedButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          style: buttonStyle(
-                              color: Colors.orange, borderRadius: 15),
-                          child: const Text(
-                            'OK',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                child: Container(
-                  height: 50,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 35, vertical: 10),
-                  color: Colors.orange,
-                  child: const Center(
-                      child: Text(
-                    'More themes',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  )),
+              Container(
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 35, vertical: 10),
+                child: AnimatedButton(
+                  text: 'More themes',
+                  pressEvent: () {
+                    AwesomeDialog(
+                      context: context,
+                      dialogType: DialogType.SUCCES,
+                      headerAnimationLoop: false,
+                      animType: AnimType.SCALE,
+                      title: 'Info',
+                      desc:
+                          'To get more themes, stay tuned to our product. We will add new themes with each update.',
+                      buttonsTextStyle:
+                          const TextStyle(color: Colors.black, fontSize: 18),
+                      showCloseIcon: false,
+                      btnOkOnPress: () {},
+                    ).show();
+                  },
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
         ),
